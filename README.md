@@ -1,6 +1,6 @@
 # Cytosine Content and Amino Acid Distribution in Prion-Forming Genes
 
-Computational analysis comparing cytosine content, nucleotide/amino acid composition, codon usage bias, and GC content between prion-forming and non-prion-forming genes in the *Saccharomyces cerevisiae* genome. Includes a mutational scanning pipeline for generating mutant prion-domain libraries for downstream amyloid prediction (WALTZ).
+Computational analysis comparing cytosine content, nucleotide/amino acid composition, and codon usage bias between prion-forming and non-prion-forming genes in the *Saccharomyces cerevisiae* genome. Includes a mutational scanning pipeline for generating mutant prion-domain libraries for downstream amyloid prediction (WALTZ).
 
 ## Overview
 
@@ -17,7 +17,7 @@ The analysis starts from the **S. cerevisiae ORF coding sequences** (FASTA forma
 
 ### Prion-Forming Domain (PrD) Boundaries
 
-Each prion-forming gene has a known prion-forming domain. The boundaries used in this analysis are defined in the notebook and are based on published experimental data:
+Each prion-forming gene has a known prion-forming domain. The boundaries used in this analysis are defined in the notebook:
 
 | Gene  | PrD (amino acid positions) |
 |-------|---------------------------|
@@ -45,7 +45,7 @@ Each prion-forming gene has a known prion-forming domain. The boundaries used in
 The notebook (`prion_mutational_analysis.ipynb`) performs the following steps:
 
 ### 1. FASTA Parsing and Gene Annotation
-- Parses the SGD FASTA file and extracts gene ID, gene name, ORF classification, and coding sequence.
+- Parses the FASTA file and extracts gene ID, gene name, ORF classification, and coding sequence.
 - Filters to verified ORFs and labels each gene as prion-forming (1) or non-prion-forming (0) based on curated gene lists.
 - Validates all coding sequences (divisible by 3, starts with ATG, ends with a stop codon).
 
@@ -102,7 +102,7 @@ pip install biopython
 
 1. Open `prion_mutational_analysis.ipynb` in [Google Colab](https://colab.research.google.com/).
 2. Mount your Google Drive when prompted.
-3. Place the SGD FASTA file (`orf_coding_all_R64-4-1_20230830.fasta`) in your Google Drive at the path specified in the notebook, or update the `fasta_path` variable accordingly.
+3. Place the FASTA file (`orf_coding_all_R64-4-1_20230830.fasta`) in your Google Drive at the `fasta_path` variable accordingly.
 4. Run all cells sequentially. Statistical comparison figures and mutant FASTA files will be saved to the specified output directories on Google Drive.
 
 ## Repository Structure
