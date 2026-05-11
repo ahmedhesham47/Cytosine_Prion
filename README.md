@@ -4,7 +4,7 @@ Computational analysis comparing cytosine content, nucleotide/amino acid composi
 
 ## Overview
 
-Prions are self-propagating protein agents that can act as non-mendellian heritable elements. In yeast, at least 18 proteins have been experimentally confirmed to form prions. This project investigates whether the DNA and protein sequence composition of prion-forming genes is systematically distinct from the rest of the yeast genome — with particular attention to **cytosine content** and its downstream consequences on amino acid usage and codon bias.
+Prions are self-propagating protein agents that can act as non-mendellian heritable elements. In yeast, at least 17 proteins have been experimentally confirmed to form prions. This project investigates whether the DNA and protein sequence composition of prion-forming genes is systematically distinct from the rest of the yeast genome — with particular attention to **cytosine content** and its downstream consequences on amino acid usage and codon bias.
 
 ## Data
 
@@ -12,8 +12,8 @@ The analysis starts from the **S. cerevisiae ORF coding sequences** (FASTA forma
 
 - **Source file:** `orf_coding_all_R64-4-1_20230830.fasta` (SGD R64-4-1 release)
 - **Filtered to:** Verified ORFs only (5,254 genes)
-- **Prion-forming genes (n=18):** SUP35, CYC8, RNQ1, URE2, NEW1, SWI1, MOD5, MOT3, GLN3, SFP1, SKY1, PUB1, PIN2, AZF1, VTS1, SNT1, RBS1, PSP1
-- **Non-prion-forming genes (n=5,236):** All remaining verified ORFs
+- **Prion-forming genes (n=17):** SUP35, CYC8, RNQ1, URE2, NEW1, SWI1, MOD5, MOT3, GLN3, SFP1, SKY1, PUB1, PIN2, AZF1, SNT1, RBS1, PSP1
+- **Non-prion-forming genes (n=5,237):** All remaining verified ORFs
 
 ### Prion-Forming Domain (PrD) Boundaries
 
@@ -35,7 +35,6 @@ Each prion-forming gene has a known prion-forming domain. The boundaries used in
 | PUB1  | 290–386                   |
 | PIN2  | 221–282                   |
 | AZF1  | 1–300                     |
-| VTS1  | 1–420                     |
 | SNT1  | 1–1226                    |
 | RBS1  | 260–400                   |
 | PSP1  | 50–400                    |
@@ -66,8 +65,8 @@ The notebook (`prion_mutational_analysis.ipynb`) performs the following steps:
 - Computes the frequency of codons containing C or G at the 1st or 2nd codon position, as a proxy for how cytosine/guanine in template-strand positions influences amino acid identity.
 
 ### 7. Statistical Comparison (Resampling-Based Mann-Whitney U)
-- Since the prion-forming group (n=18) is far smaller than the non-prion-forming group (n=5,236), a **resampling approach** is used:
-  - For each of 10,000 iterations, 18 non-prion genes are randomly sampled.
+- Since the prion-forming group (n=17) is far smaller than the non-prion-forming group (n=5,237), a **resampling approach** is used:
+  - For each of 10,000 iterations, 17 non-prion genes are randomly sampled.
   - A two-sided Mann-Whitney U test is performed for every feature (nucleotide %, amino acid %, codon %, GC content, etc.).
   - The resulting p-value distributions are plotted as histograms, color-coded by which group had the higher median.
 - This approach avoids bias from unequal sample sizes and provides a distribution of significance rather than a single test.
